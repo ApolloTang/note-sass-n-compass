@@ -1,0 +1,1 @@
+http://stackoverflow.com/questions/10728949/how-to-make-compass-to-watch-several-folders-simultaneously

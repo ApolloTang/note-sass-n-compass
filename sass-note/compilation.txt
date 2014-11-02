@@ -1,0 +1,54 @@
+
+:: Use full paths on Windows:
+
+    Although Windows does use backslashes for its path separators
+    you can use forward slashes with Ruby and they get automatically
+    converted.
+
+        sass --watch e:/myproject/test.sass:e:/myproject/test.css
+
+    The follwoing will not work (using backward slash):
+
+        sass --watch e:\myproject\test.sass:e:\myproject\test.css
+
+    Git-Bash format will not work either:
+
+        sass --watch /e/myproject/test.sass:/e/myproject/test.css
+
+
+    Ref:
+
+        https://groups.google.com/forum/#!msg/sass-lang/NL5bcaNAbMQ/mhfMsoLA1e0J
+
+
+:: Setting output option
+
+        sass --watch style.scss:style.css --style compact --debug-info
+
+        available style:
+
+            nested, expanded, compact, compressed
+
+            For explaination of output format see:
+
+            http://sass-lang.com/docs/yardoc/file.SASS_REFERENCE.html#output_style
+
+
+    Ref:
+        http://kevinchevallier.com/sass-command-line-watch-style-debug-info/
+
+
+--------------------------------------------------------------------
+
+    - Output files will be created with the same names as input files except ending with .css.
+    - <input folder> and <output folder> can be the same.
+    - Both folders can be the present working directory, so the following is valid:
+
+        $ sass --watch .:.
+
+    Ref:
+
+     http://stackoverflow.com/questions/18427849/how-to-watch-changes-in-whole-directory-folder-containing-many-sass-files
+
+
+

@@ -1,0 +1,13 @@
+
+ > sass-convert -R --from scss --to sass scss
+ > mv scss sass
+ > cd sass
+ > rm *.scss
+
+ sass-convert -R my_css_dir --from css --to scss
+
+Ref:  http://stackoverflow.com/questions/10633872/can-i-convert-css-to-scss-and-scss-to-css-parallelly
+
+
+
+

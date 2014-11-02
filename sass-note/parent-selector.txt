@@ -1,0 +1,55 @@
+
+You need parent selector (&) for declaring pseudo-class:
+
+    #container a { color: blue }
+    #container a:hover { color: red }
+
+
+    Scss syntax
+    ===========
+
+        #container a {
+            color: blue;
+            &:hover {color: red}
+        }
+
+
+    Sass syntax
+    ===========
+
+        #container a
+          color: blue
+          &:hover
+            color: red
+
+
+
+Parent selector (&) let you add a selector before the rest of
+the parent selector.
+
+
+    For example, if you use Javascript to add an ie class to the
+    <body> tag, you need to declare a css like :
+
+        #container .foo { property : value; }
+        body.ie #container .foo { property : value; }
+
+    Scss syntax
+    ===========
+
+        #container .foo {
+            property : value;
+            body.ie & { property : value; }
+        }
+
+    Sass syntax
+    ===========
+
+        #container .foo
+          color: red
+          body.ie &
+            color: red
+
+
+
+

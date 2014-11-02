@@ -1,0 +1,8 @@
+Remove it and then reinstall:
+
+    sudo gem uninstall -Iax sass
+    sudo gem install sass --pre
+
+
+    http://askubuntu.com/questions/92468/how-do-i-update-to-the-latest-version-of-sass
+

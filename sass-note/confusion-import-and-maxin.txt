@@ -1,0 +1,49 @@
+
+
+Syntax for @import and @include is very similar and they
+can be confusion:
+
+    Remember:
+        @import are for partial
+        @include are for maxin
+
+
+@import example:
+================
+
+    in file "_file-to-import.scss" contains:
+
+        .imported-class {property: value}
+
+    and in another file "main.scss" contains:
+
+        .my-class { @import "file-to-import" }
+
+    The above will generate:
+
+        .my-class .imported-class {
+          property: value;
+        }
+
+@maxin example
+==============
+
+    @mixin rounded-corners {
+        border-radius: 5px;
+    }
+
+    .notice {
+        border: 2px solid #00aa00;
+        @include rounded-corners;
+    }
+
+
+    The above expand into:
+
+    .notice {
+        border: 2px solid #00aa00;
+        border-radius: 5px;
+    }
+
+
+

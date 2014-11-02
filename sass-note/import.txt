@@ -1,0 +1,38 @@
+:: Importing Partial
+
+    when inport partial, omit file extension and the underscore that prefix filename. eg:
+
+        @import "themes/night-sky"
+
+        will import the partials
+            themes/_night-sky.scss
+            or
+            themes/_night-sky.sass
+
+
+:: Nested Import
+
+    Unlike the plan CSS, Sass allows @imports apear inside CSS rules, eg:
+
+        .import-me {property: value}
+        .include-an-import { @import "class-import-me" }
+
+    The above will generate:
+
+        .include-an-import {
+            .import-me {property: value}
+        }
+
+    namely:
+
+        .include-an-import .import-me  {property: value}
+
+:: Plain CSS imports
+
+    Sass @importr will tread the import as a plain CSS imports if the filename:
+        [1] ends with .css
+        [2] is a url
+        [3] is a css url() value
+
+
+

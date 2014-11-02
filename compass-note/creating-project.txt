@@ -1,0 +1,10 @@
+$ compass create simple --using blueprint/basic
+$ cd simple
+$ compass watch
+
+
+
+
+$ compass create /path/to/project
+$ cd /path/to/project
+$ compass watch
