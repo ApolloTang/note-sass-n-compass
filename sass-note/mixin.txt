@@ -1,0 +1,135 @@
+
+Mixins make styles reusable. It is kind of like a function
+
+    @mixin rounded-corners {
+        border-radius: 5px;
+        -moz-border-radius: 5px;
+        -webkit-border-radius: 5px;
+    }
+
+    .notice {
+        background-color: green;
+        border: 2px solid #00aa00;
+        @include rounded-corners;
+    }
+
+
+    The above expand into:
+
+        .notice {
+            background-color: green;
+            border: 2px solid #00aa00;
+            border-radius: 5px;
+            -moz-border-radius: 5px;
+            -webkit-border-radius: 5px;
+        }
+
+
+    Sass syntax
+
+        =rounded-corners
+          border-radius: 5px
+          -moz-border-radius: 5px
+          -webkit-border-radius: 5px
+
+        .notice
+          background-color: green
+          border: 2px solid #00aa00
+          +rounded-corners
+
+
+Mixins can also contain CSS selectors
+
+    @mixin no-bullets {
+        list-style: none;
+        li {
+            list-style-image: none;
+            list-style-type: none;
+            margin-left: 0px;
+        }
+    }
+
+    ul#foo {
+        font-size: 110%;
+        @include no-bullets;
+    }
+
+    Which expand into:
+
+        ul#foo {
+            font-size: 110%;
+            list-style: none;
+            li {
+                list-style-image: none;
+                list-style-type: none;
+                margin-left: 0px;
+            }
+        }
+
+
+When to Use Mixins?
+===================
+
+A good rule of thumb for knowing whether a group of properties
+would make sense as a mixin is whether you can come up with a good
+name. If you can find a nice short name that describes the style
+those properties bestow (like rounded-corners, fancy-font, or
+no-bullets), then they'd probably make a good mixin. If you can
+t, maybe a mixin isn't called for.
+
+In some ways, mixins are a lot like CSS classes. Both let you
+name chunks of style.  The different is classes are meant to
+be used in your HTML, while mixins share styles within the stylesheets
+  Classes should be semantic, not presentational.  Mixins, on
+the other hand, should be presentational: they're designed to
+describe how a CSS rule should look.
+
+
+
+Passing Arguments to a Mixin
+============================
+
+@mixin link-colors( $normal, $hover, $visited ) {
+    color: $normal;
+    &:hover { color: $hover; }
+    &:visited { color: $visited; }
+}
+
+a {
+    @include link-colors(blue, red, green);
+}
+
+
+Sass turns the above into:
+
+    a {
+        color: blue;
+        &:hover { color: red; }
+        &:visited { color: green; }
+    }
+
+
+
+When including mixin, You can explicitly name mixin's argument. Named
+arguments can go in any order, as long as they're all present.
+
+    a {
+        @include link-colors( $normal: blue, $visited: green, $hover: red );
+    }
+
+This way you don't have to keep track of which argument means
+what and which order they go in.
+
+
+
+Declare default values for Mixin's arguments
+============================================
+
+@mixin link-colors( $normal, $hover: $normal, $visited: $normal) {
+    color: $normal;
+    &:hover { color: $hover; }
+    &:visited { color: $visited; }
+}
+
+
+

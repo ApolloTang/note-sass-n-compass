@@ -1,0 +1,123 @@
+selector inheritance
+====================
+
+Selector inheritance tell Sass that one selector should inherit
+all the styles defined for another selector.
+
+inheritance is declared using the @extend
+
+    .error {
+        border: 1px red;
+        background-color: #fdd;
+    }
+
+    .seriousError {
+        @extend .error;
+        border-width: 3px;
+    }
+
+
+This means that .seriousError will inherit all the styles for
+.error defined anywhere in the stylesheet.
+
+HTML elements with
+
+    class="seriousError"
+
+will be styled as though they had
+
+    class="seriousError error".
+
+They'll not only have a three-pixel border, but that border will
+be red and the elements will have a #fdd background color as
+well.  In fact there are, because the css generated is:
+
+
+    .error, .seriousError {
+      border: 1px red;
+      background-color: #fdd;
+    }
+
+    .seriousError {
+      border-width: 3px;
+    }
+
+Note, inheritance let you reuse semantic classes in style sheet.
+.seriousError won't just inherit the style for .error itself, in
+fact it will inharit any rule that has to do with .error.  For
+example, in addition to the previous, if you had declare ".error a":
+
+    .error {
+        border: 1px red;
+        background-color: #fdd;
+    }
+
+    .error a {
+        color: green;
+        font-weight: bold;
+    }
+
+    .seriousError {
+        @extend .error;
+        border-width: 3px;
+    }
+
+
+The css generates will be:
+
+    .error, .seriousError {
+      border: 1px red;
+      background-color: #fdd; }
+
+    .error a, .seriousError a {
+      color: green;
+      font-weight: bold; }
+
+    .seriousError {
+      border-width: 3px; }
+
+
+Links within an element with class="seriousError" will also be
+red and bold.
+
+More example, if you add "h1.error"
+
+    .error {
+        border: 1px red;
+        background-color: #fdd;
+    }
+
+    .error a {
+        color: green;
+        font-weight: bold;
+    }
+
+    h1.error {
+        font-size: 1.3em;
+    }
+
+    .seriousError {
+        @extend .error;
+        border-width: 3px;
+    }
+
+The css generates will be:
+
+    .error, .seriousError {
+      border: 1px red;
+      background-color: #fdd; }
+
+    .error a, .seriousError a {
+      color: green;
+      font-weight: bold; }
+
+    h1.error, h1.seriousError {
+      font-size: 1.3em; }
+
+    .seriousError {
+      border-width: 3px; }
+
+
+
+
+
