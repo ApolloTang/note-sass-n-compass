@@ -1,0 +1,31 @@
+Controling CSS output
+
+sass --style < nested | expanded | compact | compressed > --watch .
+
+
+Nested (the default setting) looks like this.
+
+    .infobox .message {
+      border: 1px solid red;
+      background: #336699; }
+      .infobox .message .title {
+        color: red; }
+
+Expanded looks like this.
+
+    .infobox .message {
+      border: 1px solid red;
+      background: #336699;
+    }
+    .infobox .message .title {
+      color: red;
+    }
+
+Compacted looks like this. (The first declaration should be on one line.)
+
+    .infobox .message { border: 1px solid red; background: #336699; }
+    .infobox .message .title { color: red; }
+
+Compress looks like this.
+
+    .infobox .message{border:1px solid red;background:# 336699}.infobox .message .title{color:red}

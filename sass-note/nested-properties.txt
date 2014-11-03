@@ -1,0 +1,28 @@
+Nested Properties
+=================
+
+    .foo {
+        border: {
+            style: foo;
+            width: foo;
+            color: foo;
+        }
+    }
+
+    generates:
+
+        .foo {
+            border-style: foo;
+            border-width: foo;
+            border-color: foo;
+        }
+
+
+    sass syntax:
+
+        .foo
+          border:
+            style: foo
+            width: foo
+            color: foo
+

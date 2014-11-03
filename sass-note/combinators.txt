@@ -1,0 +1,63 @@
+
+Child Combinator
+================
+
+    E > F
+
+    F is the selected element
+    F is contained by element E, without any layers in between
+
+
+Adjacent Simbling Combinator
+============================
+
+    E + F
+
+    F is the selected element
+    F preceded by element E, without any siblings in between
+
+
+General Sibling Combinator
+==========================
+
+    E ~ F
+
+    F is the selected element
+    F preceded by element E, may have siblings in between
+
+
+Example:
+========
+
+    .foo .bar > .baz {foo: bar}
+    .foo .bar > .bang {foo: bar}
+    .foo + .bip {foo: bar}
+
+
+    Scss syntax
+    -----------
+
+        .foo {
+            .bar > {
+                .baz { p: v; }
+                .bang { p: v; }
+            }
+            + .bip {
+                p: v;
+            }
+        }
+
+    Sass syntax
+    -----------
+
+        .foo {
+            .bar > {
+                .baz { p: v; }
+                .bang { p: v; }
+            }
+            + .bip {
+                p: v;
+            }
+        }
+
+
